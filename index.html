@@ -29,18 +29,33 @@
     <div class="vhs-effect"></div>
     <div class="vhs-top"></div>
     <div class="vhs-bottom"></div>
+    <div class="glow"></div>
+    <div class="overlay"></div>
 
     <!-- JavaScript for Button Interaction -->
     <script>
         document.getElementById("enterButton").addEventListener("click", function () {
             const iframe = document.createElement("iframe");
             iframe.src = "https://web.archive.org/web/20011201032238/http://www.adultswim.com/";
-            iframe.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; border:none; z-index:10;";
-            document.body.innerHTML = ""; /* Clear Page */
+            iframe.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; border:none; z-index:10; filter: contrast(0.8) brightness(0.7) saturate(1.2);";
+            
+            // Clear the page and add retro effects
+            document.body.innerHTML = "";
             document.body.appendChild(iframe);
+            const vhsOverlay = `
+                <div class='scanlines'></div>
+                <div class='noise'></div>
+                <div class='vhs-effect'></div>
+                <div class='vhs-top'></div>
+                <div class='vhs-bottom'></div>
+                <div class='glow'></div>
+                <div class='overlay'></div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', vhsOverlay);
         });
     </script>
 </body>
 </html>
+
 
 
