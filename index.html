@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,13 +110,11 @@
             animation: flicker 1.5s infinite alternate;
         }
 
-        @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                opacity: 1;
-            }
-            20%, 24%, 55% {
-                opacity: 0.5;
-            }
+        iframe {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            border: none;
         }
     </style>
 </head>
@@ -124,11 +124,22 @@
     <div class="adult-swim">
         <div class="adult-swim-logo">[ adult swim ]</div>
         <div class="subtitle">All of your favorite late-night retro vibes</div>
-        <button class="button">Enter</button>
+        <button class="button" id="enterButton">Enter</button>
     </div>
 
+    <iframe id="adultSwimFrame" src="https://www.adultswim.com"></iframe>
+
     <div class="footer">
-        Made with 🖕 by <a href="#">Nicholas A Cantu</a>
+        Made with 🖕 by <a href="#">Your Name</a>
     </div>
+
+    <script>
+        document.getElementById("enterButton").addEventListener("click", function () {
+            const frame = document.getElementById("adultSwimFrame");
+            const mainContent = document.querySelector(".adult-swim");
+            frame.style.display = "block";
+            mainContent.style.display = "none";
+        });
+    </script>
 </body>
 </html>
