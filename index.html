@@ -35,13 +35,6 @@
                 rgba(0, 0, 0, 0) 3px,
                 rgba(0, 0, 0, 0) 5px
             );
-            mask: repeating-linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 1) 0px,
-                rgba(0, 0, 0, 1) 3px,
-                rgba(0, 0, 0, 0) 3px,
-                rgba(0, 0, 0, 0) 5px
-            );
         }
 
         /* Retro Lines: Top-Left and Bottom-Right */
@@ -68,29 +61,16 @@
             top: 0;
             left: 0;
             transform: skewY(-20deg) translate(-5%, -5%);
-            animation: moveLinesTopLeft 8s infinite alternate, colorShift 5s infinite alternate;
         }
 
         .retro-lines::after {
             bottom: 0;
             right: 0;
             transform: skewY(-20deg) translate(5%, 5%);
-            animation: moveLinesBottomRight 8s infinite alternate, colorShift 5s infinite alternate;
-        }
-
-        @keyframes moveLinesTopLeft {
-            0% { transform: skewY(-20deg) translate(-5%, -5%); }
-            100% { transform: skewY(-20deg) translate(-10%, -10%); }
-        }
-
-        @keyframes moveLinesBottomRight {
-            0% { transform: skewY(-20deg) translate(5%, 5%); }
-            100% { transform: skewY(-20deg) translate(10%, 10%); }
         }
 
         @keyframes colorShift {
             0% { background: linear-gradient(to bottom right, #FF0000, #FF8800, #00C8FF, #0033AA); }
-            50% { background: linear-gradient(to bottom right, #FF8800, #00C8FF, #0033AA, #FF0000); }
             100% { background: linear-gradient(to bottom right, #00C8FF, #0033AA, #FF0000, #FF8800); }
         }
 
@@ -176,6 +156,24 @@
             0%, 49% { opacity: 1; }
             50%, 100% { opacity: 0.7; }
         }
+
+        /* Iframe Styles */
+        #iframeContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            display: none;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: contrast(0.8) brightness(0.7) saturate(1.2);
+        }
     </style>
 </head>
 <body>
@@ -189,7 +187,7 @@
     <div class="vhs-noise"></div>
 
     <!-- Main Content -->
-    <div>
+    <div id="mainContent">
         <h1 class="neon-text striped-text">Adult Swim</h1>
         <p class="neon-text subtitle striped-text">All of your favorite late-night retro vibes</p>
         <button class="button striped-text" id="enterButton">Enter</button>
@@ -198,15 +196,20 @@
     <!-- Footer -->
     <div class="footer striped-text">Made with 💩 by Nicholas A Cantu</div>
 
+    <!-- Iframe Container -->
+    <div id="iframeContainer">
+        <iframe src="https://web.archive.org/web/20011201032238/http://www.adultswim.com/"></iframe>
+        <!-- Reapply Overlays -->
+        <div class="horizontal-overlay"></div>
+        <div class="vhs-noise"></div>
+    </div>
+
     <!-- JavaScript for Enter Button -->
     <script>
         document.getElementById("enterButton").addEventListener("click", function () {
-            const iframe = document.createElement("iframe");
-            iframe.src = "https://web.archive.org/web/20011201032238/http://www.adultswim.com/";
-            iframe.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; border:none; z-index:10;";
-
-            document.body.innerHTML = "";
-            document.body.appendChild(iframe);
+            document.getElementById("mainContent").style.display = "none";
+            document.querySelector(".footer").style.display = "none";
+            document.getElementById("iframeContainer").style.display = "block";
         });
     </script>
 </body>
