@@ -1,129 +1,83 @@
+/* Reset Default Styles */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Courier New', Courier, monospace;
-    background: black;
+    background: #111; /* Dark background */
     color: white;
+    height: 100vh;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.retro-grid {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 50%;
-    background: repeating-linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.1) 0px,
-        rgba(255, 255, 255, 0.1) 20px,
-        transparent 20px,
-        transparent 40px
-    ),
-    repeating-linear-gradient(
-        to top,
-        rgba(255, 255, 255, 0.1) 0px,
-        rgba(255, 255, 255, 0.1) 20px,
-        transparent 20px,
-        transparent 40px
-    );
+/* Centering Content */
+.adult-swim {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
 }
 
-iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+/* Retro Logo */
+.adult-swim-logo {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ff0044;
+    text-shadow: 0 0 10px #ff0044, 0 0 20px #ff0044;
+}
+
+/* Subtitle */
+.subtitle {
+    font-size: 1.2rem;
+    color: #ffdd44;
+}
+
+/* Emoji */
+.emoji {
+    font-size: 2.5rem;
+    margin: 10px 0;
+}
+
+/* Styled Button */
+.button {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background: linear-gradient(45deg, #ff0044, #ffdd44);
+    color: black;
+    font-weight: bold;
     border: none;
-    z-index: 10;
-    background: black;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 5px #ff0044, 0 0 20px #ffdd44;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.overlay, .glow, .noise, .vhs-effect, .vhs-top, .vhs-bottom {
-    display: none;
+.button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #ff0044, 0 0 30px #ffdd44;
 }
 
-.scanlines {
+/* Footer Styling */
+.footer {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 5;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-        transparent 0px,
-        transparent 1px,
-        rgba(0, 0, 0, 0.4) 1px,
-        rgba(0, 0, 0, 0.4) 3px
-    );
-    mix-blend-mode: multiply;
-    opacity: 1;
+    bottom: 10px;
+    font-size: 0.9rem;
+    color: #aaa;
 }
 
-.noise {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 4;
-    pointer-events: none;
-    background: url('https://upload.wikimedia.org/wikipedia/commons/d/d3/Static.gif');
-    background-size: cover;
-    opacity: 0.15;
-    mix-blend-mode: overlay;
-    animation: noise-animation 0.2s infinite;
+.footer a {
+    color: #ff0044;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-@keyframes noise-animation {
-    0% { opacity: 0.1; }
-    50% { opacity: 0.2; }
-    100% { opacity: 0.1; }
+.footer a:hover {
+    text-decoration: underline;
 }
 
-.vhs-effect {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 6;
-    pointer-events: none;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.1),
-        rgba(0, 0, 0, 0.1),
-        rgba(255, 255, 255, 0.05)
-    );
-    opacity: 0.3;
-    mix-blend-mode: screen;
-}
-
-.vhs-top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    z-index: 7;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.8),
-        transparent
-    );
-}
-
-.vhs-bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    z-index: 7;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.8),
-        transparent
-    );
-}
