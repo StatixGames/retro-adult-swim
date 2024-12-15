@@ -59,6 +59,25 @@
             animation: moveLinesBottomRight 5s infinite linear, colorShift 5s infinite alternate;
         }
 
+        /* Horizontal Line Overlay */
+        .horizontal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                to right,
+                rgba(255, 0, 0, 0.1) 0px,
+                rgba(255, 136, 0, 0.1) 5px,
+                transparent 5px,
+                transparent 10px
+            );
+            animation: moveHorizontalLines 10s infinite linear, colorShift 5s infinite alternate;
+            pointer-events: none;
+            z-index: 2;
+        }
+
         /* Animations for Movement and Color */
         @keyframes moveLinesTopLeft {
             0% { transform: skewY(-30deg) translate(-10%, -10%); }
@@ -70,35 +89,15 @@
             100% { transform: skewY(-30deg) translate(30%, 30%); }
         }
 
-        @keyframes colorShift {
-            0% {
-                background: linear-gradient(to bottom right, #FF0000, #FF8800, #00C8FF, #0033AA);
-            }
-            50% {
-                background: linear-gradient(to bottom right, #FF8800, #00C8FF, #0033AA, #FF0000);
-            }
-            100% {
-                background: linear-gradient(to bottom right, #00C8FF, #0033AA, #FF0000, #FF8800);
-            }
+        @keyframes moveHorizontalLines {
+            0% { background-position: 0 0; }
+            100% { background-position: -200px 0; }
         }
 
-        /* VHS Horizontal Stripes */
-        .horizontal-stripes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                to bottom,
-                rgba(255, 255, 255, 0.05) 0px,
-                rgba(255, 255, 255, 0.05) 1px,
-                transparent 1px,
-                transparent 3px
-            );
-            pointer-events: none;
-            z-index: 2;
-            mix-blend-mode: overlay;
+        @keyframes colorShift {
+            0% { background: linear-gradient(to right, #FF0000, #FF8800, #00C8FF, #0033AA); }
+            50% { background: linear-gradient(to right, #FF8800, #00C8FF, #0033AA, #FF0000); }
+            100% { background: linear-gradient(to right, #00C8FF, #0033AA, #FF0000, #FF8800); }
         }
 
         /* VHS Noise Effect */
@@ -176,8 +175,10 @@
     <!-- Retro Lines Background -->
     <div class="retro-lines"></div>
 
-    <!-- VHS Effects -->
-    <div class="horizontal-stripes"></div>
+    <!-- Horizontal Line Overlay -->
+    <div class="horizontal-overlay"></div>
+
+    <!-- VHS Noise -->
     <div class="vhs-noise"></div>
 
     <!-- Main Content -->
@@ -198,11 +199,9 @@
             // Clear the page and add VHS overlay
             document.body.innerHTML = "";
             document.body.appendChild(iframe);
-            document.body.insertAdjacentHTML('beforeend', `<div class='horizontal-stripes'></div>`);
         });
     </script>
 </body>
 </html>
-
 
 
