@@ -25,12 +25,31 @@
             color: white;
         }
 
+        /* Horizontal Stripe Mask for All Text */
+        .striped-text {
+            position: relative;
+            -webkit-mask: repeating-linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 1) 0px,
+                rgba(0, 0, 0, 1) 3px,
+                rgba(0, 0, 0, 0) 3px,
+                rgba(0, 0, 0, 0) 5px
+            );
+            mask: repeating-linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 1) 0px,
+                rgba(0, 0, 0, 1) 3px,
+                rgba(0, 0, 0, 0) 3px,
+                rgba(0, 0, 0, 0) 5px
+            );
+        }
+
         /* Retro Lines: Top-Left and Bottom-Right */
         .retro-lines::before, .retro-lines::after {
             content: '';
             position: absolute;
-            width: 20vw; /* Smaller width */
-            height: 40vh; /* Smaller height */
+            width: 20vw;
+            height: 40vh;
             background: linear-gradient(
                 to bottom right,
                 #FF0000 10%,
@@ -59,7 +78,6 @@
             animation: moveLinesBottomRight 8s infinite alternate, colorShift 5s infinite alternate;
         }
 
-        /* Animations for Movement and Color */
         @keyframes moveLinesTopLeft {
             0% { transform: skewY(-20deg) translate(-5%, -5%); }
             100% { transform: skewY(-20deg) translate(-10%, -10%); }
@@ -98,18 +116,6 @@
         @keyframes moveHorizontalLines {
             0% { background-position: 0 0; }
             100% { background-position: -200px 0; }
-        }
-
-        /* Footer at Bottom Center */
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1rem;
-            color: #0033AA;
-            animation: blink 2s infinite alternate;
-            z-index: 3;
         }
 
         /* VHS Noise Effect */
@@ -157,6 +163,15 @@
             cursor: pointer;
         }
 
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            color: #0033AA;
+        }
+
         @keyframes blink {
             0%, 49% { opacity: 1; }
             50%, 100% { opacity: 0.7; }
@@ -175,13 +190,13 @@
 
     <!-- Main Content -->
     <div>
-        <h1 class="neon-text">Adult Swim</h1>
-        <p class="neon-text subtitle">All of your favorite late-night retro vibes</p>
-        <button class="button" id="enterButton">Enter</button>
+        <h1 class="neon-text striped-text">Adult Swim</h1>
+        <p class="neon-text subtitle striped-text">All of your favorite late-night retro vibes</p>
+        <button class="button striped-text" id="enterButton">Enter</button>
     </div>
 
     <!-- Footer -->
-    <div class="footer">Made with 💩 by Nicholas A Cantu</div>
+    <div class="footer striped-text">Made with 💩 by Nicholas A Cantu</div>
 
     <!-- JavaScript for Enter Button -->
     <script>
