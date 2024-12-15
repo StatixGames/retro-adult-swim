@@ -66,7 +66,7 @@
             50% { opacity: 0.2; }
         }
 
-        /* VHS Flicker Effect */
+        /* Flicker Effect */
         .vhs-flicker {
             position: absolute;
             top: 0;
@@ -116,58 +116,30 @@
             100% { text-shadow: 0 0 15px #FF0000, 0 0 30px #FF8800; }
         }
 
-        /* Striped Lines */
-        .striped-lines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0) 0px,
-                rgba(0, 0, 0, 0) 4px,
-                rgba(0, 0, 0, 0.8) 5px,
-                rgba(0, 0, 0, 0.8) 7px
-            );
-            pointer-events: none;
-            z-index: 4;
-        }
-
-        .adult-swim-logo {
-            font-size: 6rem;
-            margin: 0;
-        }
-
-        .subtitle {
-            font-size: 2rem;
-            margin: 20px 0;
-        }
-
+        /* Button Styling with Teal Text */
         .button {
             padding: 15px 30px;
             font-size: 1.5rem;
             background: transparent;
-            border: 3px solid #FF8800;
-            color: transparent;
-            background-clip: text;
-            -webkit-background-clip: text;
+            border: 3px solid #00C8FF;
+            color: #00C8FF;
             text-transform: uppercase;
             cursor: pointer;
-            box-shadow: 0 0 10px #FF8800, 0 0 20px #FF0000;
+            box-shadow: 0 0 10px #00C8FF, 0 0 20px #00C8FF;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             z-index: 5;
         }
 
         .button:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 20px #FF8800, 0 0 40px #FF0000;
+            box-shadow: 0 0 20px #00C8FF, 0 0 40px #00C8FF;
         }
 
+        /* Footer Text with Blue Color */
         .footer {
             font-size: 1rem;
             margin-top: 20px;
-            color: #FF8800;
+            color: #00C8FF;
             z-index: 5;
         }
     </style>
@@ -177,13 +149,12 @@
     <div class="vhs-lines"></div>
     <div class="vhs-noise"></div>
     <div class="vhs-flicker"></div>
-    <div class="striped-lines"></div>
 
     <!-- Main Content -->
     <div>
         <h1 class="neon-text adult-swim-logo">Adult Swim</h1>
         <p class="neon-text subtitle">All of your favorite late-night retro vibes</p>
-        <button class="neon-text button" id="enterButton">Enter</button>
+        <button class="button" id="enterButton">Enter</button>
         <div class="footer">Made with 💩 by Nicholas A Cantu</div>
     </div>
 
@@ -194,12 +165,12 @@
             iframe.src = "https://web.archive.org/web/20011201032238/http://www.adultswim.com/";
             iframe.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; border:none; z-index:10; filter: contrast(0.8) brightness(0.7) saturate(1.2);";
 
-            // Clear the page and add VHS overlay
+            // Replace content with the iframe
             document.body.innerHTML = "";
             document.body.appendChild(iframe);
-            document.body.insertAdjacentHTML('beforeend', `<div class='vhs-lines'></div>`);
         });
     </script>
 </body>
 </html>
+
 
