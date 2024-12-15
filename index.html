@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adult Swim Retro</title>
     <style>
-        /* Reset */
+        /* Reset and Fullscreen Background */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Courier New', Courier, monospace;
-            background: black;
+            background: url('tempalte.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: white;
             overflow: hidden;
             display: flex;
@@ -46,16 +47,14 @@
             text-transform: uppercase;
             position: relative;
             color: transparent;
-            background: linear-gradient(90deg, #ff00ff, #ff9900);
+            background: linear-gradient(90deg, #FF0000, #FF8800, #00C8FF, #0033AA);
             background-clip: text;
             -webkit-background-clip: text;
-            overflow: hidden;
             text-shadow: 
-                0 0 5px rgba(255, 0, 255, 0.7),
-                0 0 10px rgba(255, 0, 255, 0.6),
-                0 0 15px rgba(255, 153, 0, 0.8),
-                0 0 20px rgba(255, 153, 0, 0.9),
-                0 0 30px rgba(255, 0, 255, 0.9);
+                0 0 10px rgba(255, 0, 0, 0.8),
+                0 0 20px rgba(255, 136, 0, 0.8),
+                0 0 30px rgba(0, 200, 255, 0.8),
+                0 0 40px rgba(0, 51, 170, 0.9);
             z-index: 2;
         }
 
@@ -73,26 +72,26 @@
             padding: 15px 30px;
             font-size: 1.5rem;
             background: transparent;
-            border: 2px solid #ff00ff;
+            border: 3px solid #FF8800;
             color: transparent;
             background-clip: text;
             -webkit-background-clip: text;
             text-transform: uppercase;
             cursor: pointer;
-            box-shadow: 0 0 5px #ff00ff, 0 0 20px #ff9900;
+            box-shadow: 0 0 10px #FF8800, 0 0 20px #FF0000;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: inline-block;
         }
 
         .button:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 10px #ff00ff, 0 0 30px #ff9900;
+            box-shadow: 0 0 20px #FF8800, 0 0 40px #FF0000;
         }
 
         .footer {
             font-size: 1rem;
             margin-top: 20px;
-            color: #ff9900;
+            color: #FF8800;
         }
 
         /* Striped Lines for Text Overlay */
@@ -110,8 +109,6 @@
                 rgba(0, 0, 0, 0.8) 5px,
                 rgba(0, 0, 0, 0.8) 7px
             );
-            -webkit-mask: linear-gradient(to bottom, black, transparent);
-            mask: linear-gradient(to bottom, black, transparent);
             pointer-events: none;
             z-index: 2;
         }
