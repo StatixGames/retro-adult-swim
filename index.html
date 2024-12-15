@@ -37,40 +37,51 @@
             );
         }
 
-        .neon-title {
-            text-align: center;
-            margin-top: 100px;
-            font-size: 5rem;
-            color: #ff0044;
-            text-shadow: 0 0 10px #ff0044, 0 0 20px #ff0044, 0 0 30px #ff0044, 0 0 40px #ff0044;
-        }
-
-        .subtitle {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 2rem;
-            color: #ffdd44;
-            text-shadow: 0 0 5px #ffdd44, 0 0 15px #ffdd44;
-        }
-
-        .button {
-            display: block;
-            margin: 50px auto;
-            padding: 15px 30px;
-            font-size: 1.5rem;
-            color: black;
-            background: linear-gradient(45deg, #ff0044, #ffdd44);
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
             border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            text-transform: uppercase;
-            box-shadow: 0 0 5px #ff0044, 0 0 20px #ffdd44;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1;
+            filter: contrast(0.7) brightness(0.8) saturate(1.5);
         }
 
-        .button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 10px #ff0044, 0 0 30px #ffdd44;
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 2;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0.03) 0px,
+                rgba(255, 255, 255, 0.03) 5px,
+                transparent 5px,
+                transparent 10px
+            ),
+            repeating-linear-gradient(
+                to top,
+                rgba(255, 255, 255, 0.03) 0px,
+                rgba(255, 255, 255, 0.03) 5px,
+                transparent 5px,
+                transparent 10px
+            );
+        }
+
+        .glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 3;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(255, 0, 68, 0.3), transparent);
+            mix-blend-mode: lighten;
         }
 
         .footer {
@@ -80,41 +91,7 @@
             text-align: center;
             font-size: 0.9rem;
             color: #aaa;
-        }
-
-        .footer a {
-            color: #ff0044;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .adult-swim {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        .adult-swim-logo {
-            font-size: 3rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: white;
-            background: linear-gradient(90deg, #ff0044, #ffdd44);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: flicker 1.5s infinite alternate;
-        }
-
-        iframe {
-            display: none;
-            width: 100%;
-            height: 100vh;
-            border: none;
+            z-index: 4;
         }
     </style>
 </head>
