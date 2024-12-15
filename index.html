@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adult Swim Retro</title>
     <style>
-        /* Reset and Fullscreen Background */
-        body {
+        /* General Reset */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: 'Courier New', Courier, monospace;
             background: url('tempalte.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -23,7 +27,7 @@
             background-color: #000; /* Fallback background */
         }
 
-        /* Striped Lines Covering Entire Page */
+        /* Fullscreen Striped Lines Overlay */
         .striped-lines {
             position: absolute;
             top: 0;
@@ -41,7 +45,7 @@
             z-index: 1;
         }
 
-        /* Neon Effect for All Text */
+        /* Neon Text Styling */
         .neon-text {
             font-family: 'Arial', sans-serif;
             font-weight: bold;
@@ -57,6 +61,24 @@
                 0 0 30px rgba(0, 200, 255, 0.8),
                 0 0 40px rgba(0, 51, 170, 0.9);
             z-index: 2;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                text-shadow: 
+                    0 0 10px rgba(255, 69, 0, 0.8),
+                    0 0 20px rgba(255, 136, 0, 0.8),
+                    0 0 30px rgba(0, 200, 255, 0.8),
+                    0 0 40px rgba(0, 51, 170, 0.9);
+            }
+            100% {
+                text-shadow: 
+                    0 0 15px rgba(255, 69, 0, 0.8),
+                    0 0 25px rgba(255, 136, 0, 0.8),
+                    0 0 35px rgba(0, 200, 255, 0.8),
+                    0 0 45px rgba(0, 51, 170, 0.9);
+            }
         }
 
         .adult-swim-logo {
@@ -80,7 +102,7 @@
             cursor: pointer;
             box-shadow: 0 0 10px #FF8800, 0 0 20px #FF4500;
             text-transform: uppercase;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
             display: inline-block;
             z-index: 3;
         }
@@ -99,23 +121,20 @@
             z-index: 3;
         }
 
-        /* Striped Lines for Text Overlay */
-        .neon-text::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0) 0px,
-                rgba(0, 0, 0, 0) 4px,
-                rgba(0, 0, 0, 0.8) 5px,
-                rgba(0, 0, 0, 0.8) 7px
-            );
-            pointer-events: none;
-            z-index: 2;
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .adult-swim-logo {
+                font-size: 4rem;
+            }
+
+            .subtitle {
+                font-size: 1.5rem;
+            }
+
+            .button {
+                font-size: 1.2rem;
+                padding: 10px 20px;
+            }
         }
     </style>
 </head>
