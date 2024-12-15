@@ -26,7 +26,7 @@
             position: relative;
         }
 
-        /* Global Horizontal Neon Stripe Effect */
+        /* Horizontal Neon Stripes - Global Overlay */
         .horizontal-stripes {
             position: absolute;
             top: 0;
@@ -45,25 +45,36 @@
             mix-blend-mode: overlay;
         }
 
-        /* Neon Horizontal Striped Text */
+        /* VHS Noise Effect */
+        .vhs-noise {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/d/d3/Static.gif');
+            background-size: cover;
+            opacity: 0.1;
+            mix-blend-mode: overlay;
+            animation: noise 0.2s infinite;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes noise {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+
+        /* Neon Text with Horizontal Stripes */
         .neon-text {
             font-family: 'Arial', sans-serif;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 6rem;
             position: relative;
             color: transparent;
-            background: linear-gradient(90deg, #FF8800, #FF8800);
             background-clip: text;
             -webkit-background-clip: text;
-            text-shadow: 0 0 20px #FF8800;
-            mask: repeating-linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 1) 0px,
-                rgba(0, 0, 0, 1) 5px,
-                rgba(0, 0, 0, 0) 5px,
-                rgba(0, 0, 0, 0) 10px
-            );
             -webkit-mask: repeating-linear-gradient(
                 to bottom,
                 rgba(0, 0, 0, 1) 0px,
@@ -71,46 +82,32 @@
                 rgba(0, 0, 0, 0) 5px,
                 rgba(0, 0, 0, 0) 10px
             );
-            z-index: 2;
         }
 
-        /* Pink Subtitle Text */
+        /* Specific Color Styles */
+        .title {
+            background-image: linear-gradient(90deg, #FF0000, #FF0000);
+            text-shadow: 0 0 10px #FF0000, 0 0 20px #FF0000;
+            font-size: 6rem;
+        }
+
         .subtitle {
+            background-image: linear-gradient(90deg, #FF8800, #FF8800);
+            text-shadow: 0 0 10px #FF8800, 0 0 20px #FF8800;
             font-size: 2.5rem;
             margin: 20px 0;
-            color: transparent;
-            background: linear-gradient(90deg, #FF00FF, #FF00FF);
-            background-clip: text;
-            -webkit-background-clip: text;
-            text-shadow: 0 0 20px #FF00FF;
-            mask: repeating-linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 1) 0px,
-                rgba(0, 0, 0, 1) 5px,
-                rgba(0, 0, 0, 0) 5px,
-                rgba(0, 0, 0, 0) 10px
-            );
-            -webkit-mask: repeating-linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 1) 0px,
-                rgba(0, 0, 0, 1) 5px,
-                rgba(0, 0, 0, 0) 5px,
-                rgba(0, 0, 0, 0) 10px
-            );
         }
 
-        /* Button Styling */
         .button {
+            display: inline-block;
             padding: 15px 30px;
             font-size: 1.5rem;
-            background: transparent;
             border: 3px solid #00C8FF;
-            color: #00C8FF;
-            text-transform: uppercase;
+            background-image: linear-gradient(90deg, #00C8FF, #00C8FF);
+            text-shadow: 0 0 10px #00C8FF, 0 0 20px #00C8FF;
             cursor: pointer;
-            box-shadow: 0 0 10px #00C8FF, 0 0 20px #00C8FF;
+            text-transform: uppercase;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            z-index: 3;
         }
 
         .button:hover {
@@ -118,28 +115,28 @@
             box-shadow: 0 0 20px #00C8FF, 0 0 40px #00C8FF;
         }
 
-        /* Footer */
         .footer {
             font-size: 1rem;
+            background-image: linear-gradient(90deg, #0033AA, #0033AA);
+            text-shadow: 0 0 10px #0033AA, 0 0 20px #0033AA;
             margin-top: 20px;
-            color: #0033AA;
-            z-index: 3;
         }
     </style>
 </head>
 <body>
-    <!-- Horizontal Stripes Effect -->
+    <!-- VHS Horizontal Stripes -->
     <div class="horizontal-stripes"></div>
+    <div class="vhs-noise"></div>
 
     <!-- Main Content -->
     <div>
-        <h1 class="neon-text">Adult Swim</h1>
-        <p class="subtitle">All of your favorite late-night retro vibes</p>
-        <button class="button" id="enterButton">Enter</button>
-        <div class="footer">Made with 💩 by Nicholas A Cantu</div>
+        <h1 class="neon-text title">Adult Swim</h1>
+        <p class="neon-text subtitle">All of your favorite late-night retro vibes</p>
+        <button class="neon-text button" id="enterButton">Enter</button>
+        <div class="neon-text footer">Made with 💩 by Nicholas A Cantu</div>
     </div>
 
-    <!-- JavaScript for Button Interaction -->
+    <!-- JavaScript for Enter Button -->
     <script>
         document.getElementById("enterButton").addEventListener("click", function () {
             const iframe = document.createElement("iframe");
@@ -154,6 +151,7 @@
     </script>
 </body>
 </html>
+
 
 
 
