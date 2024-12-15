@@ -13,34 +13,35 @@
             background: black;
             color: white;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            position: relative;
         }
 
-        /* Retro Grid */
-        .retro-grid {
+        /* Striped Lines Covering Entire Page */
+        .striped-lines {
             position: absolute;
-            bottom: 0;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 50%;
+            height: 100%;
             background: repeating-linear-gradient(
-                to right,
-                rgba(255, 255, 255, 0.1) 0px,
-                rgba(255, 255, 255, 0.1) 10px,
-                transparent 10px,
-                transparent 20px
-            ),
-            repeating-linear-gradient(
-                to top,
-                rgba(255, 255, 255, 0.1) 0px,
-                rgba(255, 255, 255, 0.1) 10px,
-                transparent 10px,
-                transparent 20px
+                to bottom,
+                rgba(0, 0, 0, 0) 0px,
+                rgba(0, 0, 0, 0) 4px,
+                rgba(0, 0, 0, 0.8) 5px,
+                rgba(0, 0, 0, 0.8) 7px
             );
+            pointer-events: none;
+            z-index: 1;
         }
 
-        /* Neon Text with Lines */
+        /* Neon Effect for All Text */
         .neon-text {
             font-family: 'Arial', sans-serif;
-            font-size: 8rem;
             font-weight: bold;
             text-transform: uppercase;
             position: relative;
@@ -55,8 +56,46 @@
                 0 0 15px rgba(255, 153, 0, 0.8),
                 0 0 20px rgba(255, 153, 0, 0.9),
                 0 0 30px rgba(255, 0, 255, 0.9);
+            z-index: 2;
         }
 
+        .adult-swim-logo {
+            font-size: 6rem;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            background: transparent;
+            border: 2px solid #ff00ff;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 0 5px #ff00ff, 0 0 20px #ff9900;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px #ff00ff, 0 0 30px #ff9900;
+        }
+
+        .footer {
+            font-size: 1rem;
+            margin-top: 20px;
+            color: #ff9900;
+        }
+
+        /* Striped Lines for Text Overlay */
         .neon-text::before {
             content: "";
             position: absolute;
@@ -73,100 +112,21 @@
             );
             -webkit-mask: linear-gradient(to bottom, black, transparent);
             mask: linear-gradient(to bottom, black, transparent);
-            z-index: 1;
             pointer-events: none;
-        }
-
-        /* Subtitle */
-        .subtitle {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 2rem;
-            color: #ffdd44;
-            text-shadow: 0 0 5px #ffdd44, 0 0 15px #ffdd44;
-        }
-
-        /* Button */
-        .button {
-            display: block;
-            margin: 50px auto;
-            padding: 15px 30px;
-            font-size: 1.5rem;
-            color: black;
-            background: linear-gradient(45deg, #ff0044, #ffdd44);
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            text-transform: uppercase;
-            box-shadow: 0 0 5px #ff0044, 0 0 20px #ffdd44;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 10px #ff0044, 0 0 30px #ffdd44;
-        }
-
-        /* Footer */
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-
-        .footer a {
-            color: #ff0044;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Center Content */
-        .adult-swim {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        .adult-swim-logo {
-            font-size: 3rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: white;
-            background: linear-gradient(90deg, #ff0044, #ffdd44);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: flicker 1.5s infinite alternate;
-        }
-
-        @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                opacity: 1;
-            }
-            20%, 24%, 55% {
-                opacity: 0.5;
-            }
+            z-index: 2;
         }
     </style>
 </head>
 <body>
-    <div class="retro-grid"></div>
+    <!-- Striped Lines Covering the Page -->
+    <div class="striped-lines"></div>
 
-    <div class="adult-swim">
-        <div class="neon-text">ADULTSWIM</div>
-        <div class="subtitle">All of your favorite late-night retro vibes</div>
-        <button class="button" id="enterButton">Enter</button>
-    </div>
-
-    <div class="footer">
-        Made with 💩 by <a href="#">Nicholas A Cantu</a>
+    <!-- Main Content -->
+    <div>
+        <h1 class="neon-text adult-swim-logo">Adult Swim</h1>
+        <p class="neon-text subtitle">All of your favorite late-night retro vibes</p>
+        <button class="neon-text button" id="enterButton">Enter</button>
+        <div class="footer">Made with 💩 by Nicholas A Cantu</div>
     </div>
 
     <!-- JavaScript for Button Interaction -->
@@ -175,22 +135,15 @@
             const iframe = document.createElement("iframe");
             iframe.src = "https://web.archive.org/web/20011201032238/http://www.adultswim.com/";
             iframe.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; border:none; z-index:10; filter: contrast(0.8) brightness(0.7) saturate(1.2);";
-            
+
             // Clear the page and add retro effects
             document.body.innerHTML = "";
             document.body.appendChild(iframe);
             const vhsOverlay = `
-                <div class='scanlines'></div>
-                <div class='noise'></div>
-                <div class='vhs-effect'></div>
-                <div class='vhs-top'></div>
-                <div class='vhs-bottom'></div>
-                <div class='glow'></div>
-                <div class='overlay'></div>
+                <div class='striped-lines'></div>
             `;
             document.body.insertAdjacentHTML('beforeend', vhsOverlay);
         });
     </script>
 </body>
 </html>
-
