@@ -25,12 +25,12 @@
             color: white;
         }
 
-        /* Retro Lines at Top-Left and Bottom-Right */
+        /* Retro Lines: Top-Left and Bottom-Right */
         .retro-lines::before, .retro-lines::after {
             content: '';
             position: absolute;
-            width: 30vw;
-            height: 50vh;
+            width: 20vw; /* Smaller width */
+            height: 40vh; /* Smaller height */
             background: linear-gradient(
                 to bottom right,
                 #FF0000 10%,
@@ -48,15 +48,32 @@
         .retro-lines::before {
             top: 0;
             left: 0;
-            transform: skewY(-30deg) translate(-10%, -10%);
-            animation: moveLinesTopLeft 5s infinite linear, colorShift 5s infinite alternate;
+            transform: skewY(-20deg) translate(-5%, -5%);
+            animation: moveLinesTopLeft 8s infinite alternate, colorShift 5s infinite alternate;
         }
 
         .retro-lines::after {
             bottom: 0;
             right: 0;
-            transform: skewY(-30deg) translate(10%, 10%);
-            animation: moveLinesBottomRight 5s infinite linear, colorShift 5s infinite alternate;
+            transform: skewY(-20deg) translate(5%, 5%);
+            animation: moveLinesBottomRight 8s infinite alternate, colorShift 5s infinite alternate;
+        }
+
+        /* Animations for Movement and Color */
+        @keyframes moveLinesTopLeft {
+            0% { transform: skewY(-20deg) translate(-5%, -5%); }
+            100% { transform: skewY(-20deg) translate(-10%, -10%); }
+        }
+
+        @keyframes moveLinesBottomRight {
+            0% { transform: skewY(-20deg) translate(5%, 5%); }
+            100% { transform: skewY(-20deg) translate(10%, 10%); }
+        }
+
+        @keyframes colorShift {
+            0% { background: linear-gradient(to bottom right, #FF0000, #FF8800, #00C8FF, #0033AA); }
+            50% { background: linear-gradient(to bottom right, #FF8800, #00C8FF, #0033AA, #FF0000); }
+            100% { background: linear-gradient(to bottom right, #00C8FF, #0033AA, #FF0000, #FF8800); }
         }
 
         /* Horizontal Line Overlay */
@@ -73,20 +90,9 @@
                 transparent 5px,
                 transparent 10px
             );
-            animation: moveHorizontalLines 10s infinite linear, colorShift 5s infinite alternate;
+            animation: moveHorizontalLines 10s infinite linear;
             pointer-events: none;
             z-index: 2;
-        }
-
-        /* Animations for Movement and Color */
-        @keyframes moveLinesTopLeft {
-            0% { transform: skewY(-30deg) translate(-10%, -10%); }
-            100% { transform: skewY(-30deg) translate(-30%, -30%); }
-        }
-
-        @keyframes moveLinesBottomRight {
-            0% { transform: skewY(-30deg) translate(10%, 10%); }
-            100% { transform: skewY(-30deg) translate(30%, 30%); }
         }
 
         @keyframes moveHorizontalLines {
@@ -94,10 +100,16 @@
             100% { background-position: -200px 0; }
         }
 
-        @keyframes colorShift {
-            0% { background: linear-gradient(to right, #FF0000, #FF8800, #00C8FF, #0033AA); }
-            50% { background: linear-gradient(to right, #FF8800, #00C8FF, #0033AA, #FF0000); }
-            100% { background: linear-gradient(to right, #00C8FF, #0033AA, #FF0000, #FF8800); }
+        /* Footer at Bottom Center */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            color: #0033AA;
+            animation: blink 2s infinite alternate;
+            z-index: 3;
         }
 
         /* VHS Noise Effect */
@@ -121,37 +133,19 @@
             50% { opacity: 0.2; }
         }
 
-        /* Neon Text */
+        /* Text Styles */
         .neon-text {
             font-family: 'Arial', sans-serif;
             font-weight: bold;
             text-transform: uppercase;
-            color: transparent;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-mask: repeating-linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 1) 0px,
-                rgba(0, 0, 0, 1) 2px,
-                rgba(0, 0, 0, 0) 2px,
-                rgba(0, 0, 0, 0) 4px
-            );
+            font-size: 3rem;
+            color: #FF0000;
+            text-shadow: 0 0 5px #FF0000, 0 0 10px #FF8800, 0 0 20px #00C8FF;
             animation: blink 2s infinite alternate;
         }
 
-        @keyframes blink {
-            0%, 49% { opacity: 1; }
-            50%, 100% { opacity: 0.7; }
-        }
-
-        /* Text Styles */
-        .title {
-            font-size: 6rem;
-            color: #FF0000;
-        }
-
         .subtitle {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #FF8800;
         }
 
@@ -159,15 +153,13 @@
             font-size: 1.5rem;
             padding: 10px 20px;
             border: 2px solid #00C8FF;
-            background-image: linear-gradient(90deg, #00C8FF, #00C8FF);
+            color: #00C8FF;
             cursor: pointer;
-            animation: blink 2s infinite alternate;
         }
 
-        .footer {
-            font-size: 1rem;
-            color: #0033AA;
-            animation: blink 2s infinite alternate;
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0.7; }
         }
     </style>
 </head>
@@ -183,25 +175,24 @@
 
     <!-- Main Content -->
     <div>
-        <h1 class="neon-text title">Adult Swim</h1>
+        <h1 class="neon-text">Adult Swim</h1>
         <p class="neon-text subtitle">All of your favorite late-night retro vibes</p>
-        <button class="neon-text button" id="enterButton">Enter</button>
-        <div class="neon-text footer">Made with 💩 by Nicholas A Cantu</div>
+        <button class="button" id="enterButton">Enter</button>
     </div>
+
+    <!-- Footer -->
+    <div class="footer">Made with 💩 by Nicholas A Cantu</div>
 
     <!-- JavaScript for Enter Button -->
     <script>
         document.getElementById("enterButton").addEventListener("click", function () {
             const iframe = document.createElement("iframe");
             iframe.src = "https://web.archive.org/web/20011201032238/http://www.adultswim.com/";
-            iframe.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; border:none; z-index:10; filter: contrast(0.8) brightness(0.7) saturate(1.2);";
+            iframe.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; border:none; z-index:10;";
 
-            // Clear the page and add VHS overlay
             document.body.innerHTML = "";
             document.body.appendChild(iframe);
         });
     </script>
 </body>
 </html>
-
-
