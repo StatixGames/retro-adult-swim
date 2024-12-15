@@ -37,7 +37,7 @@
             );
         }
 
-        /* Retro Lines: Top-Left and Bottom-Right */
+        /* Retro Lines */
         .retro-lines::before, .retro-lines::after {
             content: '';
             position: absolute;
@@ -166,7 +166,7 @@
             height: 100%;
             z-index: 10;
             display: none;
-            background: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+            background: rgba(0, 0, 0, 0.7);
         }
 
         iframe {
@@ -174,7 +174,16 @@
             height: 100%;
             border: none;
             filter: contrast(0.8) brightness(0.7) saturate(1.2);
-            mix-blend-mode: lighten; /* Apply color effects */
+        }
+
+        /* Image at Bottom Left */
+        #iframeImage {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 150px;
+            height: auto;
+            z-index: 11;
         }
     </style>
 </head>
@@ -201,9 +210,8 @@
     <!-- Iframe Container -->
     <div id="iframeContainer">
         <iframe src="https://web.archive.org/web/20011201032238/http://www.adultswim.com/"></iframe>
-        <!-- Reapply Overlays -->
-        <div class="horizontal-overlay"></div>
-        <div class="vhs-noise"></div>
+        <!-- Image at Bottom Left -->
+        <img id="iframeImage" src="images.jpg" alt="Retro Image">
     </div>
 
     <!-- JavaScript for Enter Button -->
@@ -216,4 +224,5 @@
     </script>
 </body>
 </html>
+
 
