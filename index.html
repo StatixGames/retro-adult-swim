@@ -66,7 +66,7 @@
             50% { opacity: 0.2; }
         }
 
-        /* Flicker Effect */
+        /* VHS Flicker Effect */
         .vhs-flicker {
             position: absolute;
             top: 0;
@@ -116,7 +116,7 @@
             100% { text-shadow: 0 0 15px #FF0000, 0 0 30px #FF8800; }
         }
 
-        /* Button Styling with Teal Text */
+        /* Enter Button with Teal Text */
         .button {
             padding: 15px 30px;
             font-size: 1.5rem;
@@ -135,11 +135,11 @@
             box-shadow: 0 0 20px #00C8FF, 0 0 40px #00C8FF;
         }
 
-        /* Footer Text with Blue Color */
+        /* Footer Text in Blue */
         .footer {
             font-size: 1rem;
             margin-top: 20px;
-            color: #00C8FF;
+            color: #0033AA;
             z-index: 5;
         }
     </style>
@@ -165,12 +165,12 @@
             iframe.src = "https://web.archive.org/web/20011201032238/http://www.adultswim.com/";
             iframe.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; border:none; z-index:10; filter: contrast(0.8) brightness(0.7) saturate(1.2);";
 
-            // Replace content with the iframe
+            // Clear the page and add VHS overlay
             document.body.innerHTML = "";
             document.body.appendChild(iframe);
+            document.body.insertAdjacentHTML('beforeend', `<div class='vhs-lines'></div>`);
         });
     </script>
 </body>
 </html>
-
 
