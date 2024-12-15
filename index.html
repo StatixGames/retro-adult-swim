@@ -20,6 +20,7 @@
             height: 100vh;
             text-align: center;
             position: relative;
+            background-color: #000; /* Fallback background */
         }
 
         /* Striped Lines Covering Entire Page */
@@ -47,11 +48,11 @@
             text-transform: uppercase;
             position: relative;
             color: transparent;
-            background: linear-gradient(90deg, #FF0000, #FF8800, #00C8FF, #0033AA);
+            background: linear-gradient(90deg, #FF4500, #FF8800, #00C8FF, #0033AA);
             background-clip: text;
             -webkit-background-clip: text;
             text-shadow: 
-                0 0 10px rgba(255, 0, 0, 0.8),
+                0 0 10px rgba(255, 69, 0, 0.8),
                 0 0 20px rgba(255, 136, 0, 0.8),
                 0 0 30px rgba(0, 200, 255, 0.8),
                 0 0 40px rgba(0, 51, 170, 0.9);
@@ -68,30 +69,34 @@
             margin: 20px 0;
         }
 
+        /* Clear and Enhanced Button */
         .button {
             padding: 15px 30px;
             font-size: 1.5rem;
-            background: transparent;
+            color: #ffffff;
+            background: linear-gradient(45deg, #FF4500, #00C8FF);
             border: 3px solid #FF8800;
-            color: transparent;
-            background-clip: text;
-            -webkit-background-clip: text;
-            text-transform: uppercase;
+            border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 0 10px #FF8800, 0 0 20px #FF0000;
+            box-shadow: 0 0 10px #FF8800, 0 0 20px #FF4500;
+            text-transform: uppercase;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: inline-block;
+            z-index: 3;
         }
 
         .button:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 20px #FF8800, 0 0 40px #FF0000;
+            box-shadow: 0 0 20px #FF8800, 0 0 40px #FF4500;
+            color: #000;
+            background: linear-gradient(45deg, #FF8800, #0033AA);
         }
 
         .footer {
             font-size: 1rem;
             margin-top: 20px;
             color: #FF8800;
+            z-index: 3;
         }
 
         /* Striped Lines for Text Overlay */
@@ -122,7 +127,7 @@
     <div>
         <h1 class="neon-text adult-swim-logo">Adult Swim</h1>
         <p class="neon-text subtitle">All of your favorite late-night retro vibes</p>
-        <button class="neon-text button" id="enterButton">Enter</button>
+        <button class="button" id="enterButton">Enter</button>
         <div class="footer">Made with 💩 by Nicholas A Cantu</div>
     </div>
 
