@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adult Swim Retro</title>
     <style>
-        /* Reset */
+        /* Reset and Fullscreen Background */
         * {
             margin: 0;
             padding: 0;
@@ -14,7 +14,8 @@
 
         body {
             font-family: 'Courier New', Courier, monospace;
-            background: black;
+            background: url('tempalte.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: white;
             overflow: hidden;
             display: flex;
@@ -44,7 +45,7 @@
             z-index: 1;
         }
 
-        /* Subtle VHS Noise */
+        /* Noise Effect */
         .vhs-noise {
             position: absolute;
             top: 0;
@@ -55,8 +56,8 @@
             background-size: cover;
             opacity: 0.1;
             mix-blend-mode: overlay;
-            pointer-events: none;
             animation: noise 0.2s infinite;
+            pointer-events: none;
             z-index: 2;
         }
 
@@ -65,7 +66,7 @@
             50% { opacity: 0.2; }
         }
 
-        /* Flickering Effect */
+        /* VHS Flicker Effect */
         .vhs-flicker {
             position: absolute;
             top: 0;
@@ -91,7 +92,31 @@
             100% { opacity: 0.3; }
         }
 
-        /* Striped Overlay */
+        /* Neon Text Styling */
+        .neon-text {
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            color: transparent;
+            background: linear-gradient(90deg, #FF0000, #FF8800, #00C8FF, #0033AA);
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-shadow: 
+                0 0 10px rgba(255, 0, 0, 0.8),
+                0 0 20px rgba(255, 136, 0, 0.8),
+                0 0 30px rgba(0, 200, 255, 0.8),
+                0 0 40px rgba(0, 51, 170, 0.9);
+            animation: pulse 2s infinite alternate;
+            z-index: 5;
+        }
+
+        @keyframes pulse {
+            0% { text-shadow: 0 0 10px #FF0000, 0 0 20px #FF8800; }
+            100% { text-shadow: 0 0 15px #FF0000, 0 0 30px #FF8800; }
+        }
+
+        /* Striped Lines */
         .striped-lines {
             position: absolute;
             top: 0;
@@ -109,56 +134,40 @@
             z-index: 4;
         }
 
-        /* Neon Text Styling */
-        .neon-text {
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
-            text-transform: uppercase;
-            position: relative;
-            color: transparent;
-            background: linear-gradient(90deg, #ff00ff, #ff9900);
-            background-clip: text;
-            -webkit-background-clip: text;
-            text-shadow: 
-                0 0 5px rgba(255, 0, 255, 0.7),
-                0 0 10px rgba(255, 0, 255, 0.6),
-                0 0 15px rgba(255, 153, 0, 0.8),
-                0 0 20px rgba(255, 153, 0, 0.9),
-                0 0 30px rgba(255, 0, 255, 0.9);
-            animation: pulse 2s infinite alternate;
-            z-index: 5;
+        .adult-swim-logo {
+            font-size: 6rem;
+            margin: 0;
         }
 
-        @keyframes pulse {
-            0% { text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff9900; }
-            100% { text-shadow: 0 0 15px #ff00ff, 0 0 30px #ff9900; }
+        .subtitle {
+            font-size: 2rem;
+            margin: 20px 0;
         }
 
-        /* Neon Button */
         .button {
             padding: 15px 30px;
             font-size: 1.5rem;
             background: transparent;
-            border: 2px solid #ff00ff;
+            border: 3px solid #FF8800;
             color: transparent;
             background-clip: text;
             -webkit-background-clip: text;
             text-transform: uppercase;
             cursor: pointer;
-            box-shadow: 0 0 5px #ff00ff, 0 0 20px #ff9900;
+            box-shadow: 0 0 10px #FF8800, 0 0 20px #FF0000;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             z-index: 5;
         }
 
         .button:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 10px #ff00ff, 0 0 30px #ff9900;
+            box-shadow: 0 0 20px #FF8800, 0 0 40px #FF0000;
         }
 
         .footer {
             font-size: 1rem;
             margin-top: 20px;
-            color: #ff9900;
+            color: #FF8800;
             z-index: 5;
         }
     </style>
@@ -174,7 +183,7 @@
     <div>
         <h1 class="neon-text adult-swim-logo">Adult Swim</h1>
         <p class="neon-text subtitle">All of your favorite late-night retro vibes</p>
-        <button class="button neon-text" id="enterButton">Enter</button>
+        <button class="neon-text button" id="enterButton">Enter</button>
         <div class="footer">Made with 💩 by Nicholas A Cantu</div>
     </div>
 
@@ -185,11 +194,10 @@
             iframe.src = "https://web.archive.org/web/20011201032238/http://www.adultswim.com/";
             iframe.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; border:none; z-index:10; filter: contrast(0.8) brightness(0.7) saturate(1.2);";
 
-            // Replace content with the iframe
+            // Clear the page and add VHS overlay
             document.body.innerHTML = "";
             document.body.appendChild(iframe);
-            const vhsOverlay = `<div class='vhs-lines'></div>`;
-            document.body.insertAdjacentHTML('beforeend', vhsOverlay);
+            document.body.insertAdjacentHTML('beforeend', `<div class='vhs-lines'></div>`);
         });
     </script>
 </body>
