@@ -4,124 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adult Swim Retro</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Courier New', Courier, monospace;
-            background: black;
-            color: white;
-            overflow: hidden;
-        }
-
-        .retro-grid {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 50%;
-            background: repeating-linear-gradient(
-                to right,
-                rgba(255, 255, 255, 0.1) 0px,
-                rgba(255, 255, 255, 0.1) 10px,
-                transparent 10px,
-                transparent 20px
-            ),
-            repeating-linear-gradient(
-                to top,
-                rgba(255, 255, 255, 0.1) 0px,
-                rgba(255, 255, 255, 0.1) 10px,
-                transparent 10px,
-                transparent 20px
-            );
-        }
-
-        iframe {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            border: none;
-            z-index: 1;
-            filter: contrast(0.7) brightness(0.8) saturate(1.5);
-        }
-
-        .adult-swim {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        .adult-swim-logo {
-            font-size: 3rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: white;
-            background: linear-gradient(90deg, #ff0044, #ffdd44);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: flicker 1.5s infinite alternate;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: #ffdd44;
-            margin: 20px 0;
-        }
-
-        .button {
-            display: inline-block;
-            margin: 20px auto;
-            padding: 15px 30px;
-            font-size: 1.5rem;
-            color: black;
-            background: linear-gradient(45deg, #ff0044, #ffdd44);
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            text-transform: uppercase;
-            box-shadow: 0 0 5px #ff0044, 0 0 20px #ffdd44;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 10px #ff0044, 0 0 30px #ffdd44;
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-
-        .footer a {
-            color: #ff0044;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .overlay, .glow, .scanlines, .noise, .vhs-effect, .vhs-top, .vhs-bottom {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Main Page Content -->
+    <!-- Retro Grid Background -->
     <div class="retro-grid"></div>
 
+    <!-- Main Page Content -->
     <div class="adult-swim">
         <div class="adult-swim-logo">[ adult swim ]</div>
         <div class="subtitle">All of your favorite late-night retro vibes</div>
+        <div class="emoji">💩</div>
         <button class="button" id="enterButton">Enter</button>
     </div>
 
@@ -130,10 +23,19 @@
 
     <!-- Footer -->
     <div class="footer">
-        Made with 💩 by <a href="#">Your Name</a>
+        Made with ❤️ by <a href="#">Your Name</a>
     </div>
 
-    <!-- JavaScript for Interaction -->
+    <!-- Retro Effects -->
+    <div class="overlay"></div>
+    <div class="glow"></div>
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+    <div class="vhs-effect"></div>
+    <div class="vhs-top"></div>
+    <div class="vhs-bottom"></div>
+
+    <!-- JavaScript for Button Interaction -->
     <script>
         document.getElementById("enterButton").addEventListener("click", function () {
             const frame = document.getElementById("adultSwimFrame");
@@ -144,20 +46,11 @@
             mainContent.style.display = "none";
             retroGrid.style.display = "none";
 
-            // Show retro effects (optional)
+            // Show retro effects
             document.querySelectorAll(".overlay, .glow, .scanlines, .noise, .vhs-effect, .vhs-top, .vhs-bottom").forEach(el => {
                 el.style.display = "block";
             });
         });
     </script>
-
-    <!-- Retro Effects -->
-    <div class="overlay"></div>
-    <div class="glow"></div>
-    <div class="scanlines"></div>
-    <div class="noise"></div>
-    <div class="vhs-effect"></div>
-    <div class="vhs-top"></div>
-    <div class="vhs-bottom"></div>
 </body>
 </html>
