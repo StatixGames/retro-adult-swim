@@ -66,54 +66,44 @@
             50% { opacity: 0.2; }
         }
 
-        /* VHS Flicker Effect */
-        .vhs-flicker {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.3) 0%,
-                transparent 25%,
-                rgba(0, 0, 0, 0.3) 50%,
-                transparent 75%,
-                rgba(0, 0, 0, 0.3) 100%
-            );
-            opacity: 0.2;
-            animation: flicker 0.5s infinite alternate;
-            pointer-events: none;
-            z-index: 3;
-        }
-
-        @keyframes flicker {
-            0% { opacity: 0.15; }
-            100% { opacity: 0.3; }
-        }
-
-        /* Neon Text Styling */
+        /* Neon Horizontal Striped Text */
         .neon-text {
             font-family: 'Arial', sans-serif;
             font-weight: bold;
             text-transform: uppercase;
+            font-size: 6rem;
             position: relative;
             color: transparent;
-            background: linear-gradient(90deg, #FF0000, #FF8800, #00C8FF, #0033AA);
+
+            /* Gradient Background */
+            background: linear-gradient(90deg, #FF00FF, #FF66FF, #FFCC00, #FFFF33);
             background-clip: text;
             -webkit-background-clip: text;
-            text-shadow: 
-                0 0 10px rgba(255, 0, 0, 0.8),
-                0 0 20px rgba(255, 136, 0, 0.8),
-                0 0 30px rgba(0, 200, 255, 0.8),
-                0 0 40px rgba(0, 51, 170, 0.9);
-            animation: pulse 2s infinite alternate;
-            z-index: 5;
-        }
 
-        @keyframes pulse {
-            0% { text-shadow: 0 0 10px #FF0000, 0 0 20px #FF8800; }
-            100% { text-shadow: 0 0 15px #FF0000, 0 0 30px #FF8800; }
+            /* Horizontal Stripes */
+            mask: repeating-linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 1) 0px,
+                rgba(0, 0, 0, 1) 4px,
+                rgba(0, 0, 0, 0) 4px,
+                rgba(0, 0, 0, 0) 8px
+            );
+            -webkit-mask: repeating-linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 1) 0px,
+                rgba(0, 0, 0, 1) 4px,
+                rgba(0, 0, 0, 0) 4px,
+                rgba(0, 0, 0, 0) 8px
+            );
+
+            /* Glow Effect */
+            text-shadow: 
+                0 0 10px #FF00FF,
+                0 0 20px #FF66FF,
+                0 0 30px #FFCC00,
+                0 0 40px #FFFF33;
+
+            z-index: 5;
         }
 
         /* Enter Button with Teal Text */
@@ -148,31 +138,14 @@
     <!-- VHS Effects -->
     <div class="vhs-lines"></div>
     <div class="vhs-noise"></div>
-    <div class="vhs-flicker"></div>
-    <div class="striped-lines"></div>
 
     <!-- Main Content -->
     <div>
         <h1 class="neon-text adult-swim-logo">Adult Swim</h1>
-        <p class="neon-text subtitle">All of your favorite late-night retro vibes</p>
-        <button class="button" id="enterButton">Enter</button>
-        <div class="footer">Made with 💩 by Nicholas A Cantu</div>
+        <p class="footer">Made with 💩 by Nicholas A Cantu</p>
     </div>
-
-    <!-- JavaScript for Button Interaction -->
-    <script>
-        document.getElementById("enterButton").addEventListener("click", function () {
-            const iframe = document.createElement("iframe");
-            iframe.src = "https://web.archive.org/web/20011201032238/http://www.adultswim.com/";
-            iframe.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; border:none; z-index:10; filter: contrast(0.8) brightness(0.7) saturate(1.2);";
-
-            // Clear the page and add VHS overlay
-            document.body.innerHTML = "";
-            document.body.appendChild(iframe);
-            document.body.insertAdjacentHTML('beforeend', `<div class='vhs-lines'></div>`);
-        });
-    </script>
 </body>
 </html>
+
 
 
