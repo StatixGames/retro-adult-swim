@@ -39,7 +39,7 @@ iframe {
     background: black;
 }
 
-.overlay, .glow, .scanlines, .noise, .vhs-effect, .vhs-top, .vhs-bottom {
+.overlay, .glow, .noise, .vhs-effect, .vhs-top, .vhs-bottom {
     display: none;
 }
 
@@ -54,11 +54,11 @@ iframe {
     background: repeating-linear-gradient(
         transparent 0px,
         transparent 1px,
-        rgba(0, 0, 0, 0.2) 1px,
-        rgba(0, 0, 0, 0.2) 3px
+        rgba(0, 0, 0, 0.4) 1px,
+        rgba(0, 0, 0, 0.4) 3px
     );
     mix-blend-mode: multiply;
-    opacity: 0.9;
+    opacity: 1;
 }
 
 .noise {
