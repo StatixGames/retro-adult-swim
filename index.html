@@ -26,7 +26,7 @@
             position: relative;
         }
 
-        /* Global Horizontal Neon Stripe Overlay */
+        /* Global Horizontal Neon Stripe Effect */
         .horizontal-stripes {
             position: absolute;
             top: 0;
@@ -35,78 +35,14 @@
             height: 100%;
             background: repeating-linear-gradient(
                 to bottom,
-                rgba(255, 0, 255, 0.1) 0px,
-                rgba(255, 0, 255, 0.1) 5px,
-                rgba(255, 136, 0, 0) 5px,
-                rgba(255, 136, 0, 0) 10px
-            );
-            mix-blend-mode: overlay;
-            pointer-events: none;
-            z-index: 4;
-        }
-
-        /* VHS Effects */
-        .vhs-lines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                to bottom,
                 rgba(255, 255, 255, 0.02) 0px,
-                rgba(255, 255, 255, 0.02) 2px,
-                transparent 2px,
-                transparent 4px
+                rgba(255, 255, 255, 0.02) 3px,
+                transparent 3px,
+                transparent 6px
             );
-            opacity: 0.3;
-            pointer-events: none;
-            z-index: 3;
-        }
-
-        .vhs-noise {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/d/d3/Static.gif');
-            background-size: cover;
-            opacity: 0.1;
-            mix-blend-mode: overlay;
-            animation: noise 0.2s infinite;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        @keyframes noise {
-            0%, 100% { opacity: 0.1; }
-            50% { opacity: 0.2; }
-        }
-
-        .vhs-flicker {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.3) 0%,
-                transparent 25%,
-                rgba(0, 0, 0, 0.3) 50%,
-                transparent 75%,
-                rgba(0, 0, 0, 0.3) 100%
-            );
-            opacity: 0.2;
-            animation: flicker 0.5s infinite alternate;
             pointer-events: none;
             z-index: 1;
-        }
-
-        @keyframes flicker {
-            0% { opacity: 0.15; }
-            100% { opacity: 0.3; }
+            mix-blend-mode: overlay;
         }
 
         /* Neon Horizontal Striped Text */
@@ -117,13 +53,10 @@
             font-size: 6rem;
             position: relative;
             color: transparent;
-
-            /* Gradient Background */
-            background: linear-gradient(90deg, #FF00FF, #FF8800, #00C8FF, #FFFF00);
+            background: linear-gradient(90deg, #FF8800, #FF8800);
             background-clip: text;
             -webkit-background-clip: text;
-
-            /* Horizontal Stripes */
+            text-shadow: 0 0 20px #FF8800;
             mask: repeating-linear-gradient(
                 to bottom,
                 rgba(0, 0, 0, 1) 0px,
@@ -138,25 +71,35 @@
                 rgba(0, 0, 0, 0) 5px,
                 rgba(0, 0, 0, 0) 10px
             );
-
-            /* Glow Effect */
-            text-shadow: 
-                0 0 10px #FF00FF,
-                0 0 20px #FF8800,
-                0 0 30px #00C8FF,
-                0 0 40px #FFFF00;
-
-            z-index: 5;
+            z-index: 2;
         }
 
-        /* Subtitle with Increased Size */
+        /* Pink Subtitle Text */
         .subtitle {
-            font-size: 2.5rem; /* Larger size for better visibility */
+            font-size: 2.5rem;
             margin: 20px 0;
-            text-shadow: 0 0 5px #FF8800;
+            color: transparent;
+            background: linear-gradient(90deg, #FF00FF, #FF00FF);
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-shadow: 0 0 20px #FF00FF;
+            mask: repeating-linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 1) 0px,
+                rgba(0, 0, 0, 1) 5px,
+                rgba(0, 0, 0, 0) 5px,
+                rgba(0, 0, 0, 0) 10px
+            );
+            -webkit-mask: repeating-linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 1) 0px,
+                rgba(0, 0, 0, 1) 5px,
+                rgba(0, 0, 0, 0) 5px,
+                rgba(0, 0, 0, 0) 10px
+            );
         }
 
-        /* Enter Button */
+        /* Button Styling */
         .button {
             padding: 15px 30px;
             font-size: 1.5rem;
@@ -167,7 +110,7 @@
             cursor: pointer;
             box-shadow: 0 0 10px #00C8FF, 0 0 20px #00C8FF;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            z-index: 5;
+            z-index: 3;
         }
 
         .button:hover {
@@ -180,15 +123,12 @@
             font-size: 1rem;
             margin-top: 20px;
             color: #0033AA;
-            z-index: 5;
+            z-index: 3;
         }
     </style>
 </head>
 <body>
-    <!-- VHS Effects -->
-    <div class="vhs-lines"></div>
-    <div class="vhs-noise"></div>
-    <div class="vhs-flicker"></div>
+    <!-- Horizontal Stripes Effect -->
     <div class="horizontal-stripes"></div>
 
     <!-- Main Content -->
@@ -209,11 +149,12 @@
             // Clear the page and add VHS overlay
             document.body.innerHTML = "";
             document.body.appendChild(iframe);
-            document.body.insertAdjacentHTML('beforeend', `<div class='vhs-lines'></div>`);
+            document.body.insertAdjacentHTML('beforeend', `<div class='horizontal-stripes'></div>`);
         });
     </script>
 </body>
 </html>
+
 
 
 
