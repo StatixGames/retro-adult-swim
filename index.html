@@ -166,6 +166,7 @@
             height: 100%;
             z-index: 10;
             display: none;
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
         }
 
         iframe {
@@ -173,6 +174,7 @@
             height: 100%;
             border: none;
             filter: contrast(0.8) brightness(0.7) saturate(1.2);
+            mix-blend-mode: lighten; /* Apply color effects */
         }
     </style>
 </head>
@@ -214,3 +216,4 @@
     </script>
 </body>
 </html>
+
