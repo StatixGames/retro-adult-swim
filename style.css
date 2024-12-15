@@ -1,187 +1,131 @@
-/* Reset Default Styles */
-body {
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: 'Courier New', Courier, monospace;
-    background: #111; /* Dark background */
+    background: url('tempalte.jpg') no-repeat center center fixed;
+    background-size: cover;
     color: white;
-    height: 100vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
     text-align: center;
+    position: relative;
+    background-color: #000; /* Fallback background */
 }
 
-/* Centering Content */
-.adult-swim {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+/* Fullscreen Striped Lines Overlay */
+.striped-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0px,
+        rgba(0, 0, 0, 0) 4px,
+        rgba(0, 0, 0, 0.8) 5px,
+        rgba(0, 0, 0, 0.8) 7px
+    );
+    pointer-events: none;
+    z-index: 1;
 }
 
-/* Retro Logo with Flickering Effect */
-.adult-swim-logo {
-    font-size: 3rem;
+/* Neon Text Styling */
+.neon-text {
+    font-family: 'Arial', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
-    color: white;
-    background: linear-gradient(90deg, #ff0044, #ffdd44);
+    position: relative;
+    color: transparent;
+    background: linear-gradient(90deg, #FF4500, #FF8800, #00C8FF, #0033AA);
+    background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: flicker 1.5s infinite alternate;
+    text-shadow: 
+        0 0 10px rgba(255, 69, 0, 0.8),
+        0 0 20px rgba(255, 136, 0, 0.8),
+        0 0 30px rgba(0, 200, 255, 0.8),
+        0 0 40px rgba(0, 51, 170, 0.9);
+    z-index: 2;
+    animation: pulse 2s infinite alternate;
 }
 
-@keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
+@keyframes pulse {
+    0% {
+        text-shadow: 
+            0 0 10px rgba(255, 69, 0, 0.8),
+            0 0 20px rgba(255, 136, 0, 0.8),
+            0 0 30px rgba(0, 200, 255, 0.8),
+            0 0 40px rgba(0, 51, 170, 0.9);
     }
-    20%, 24%, 55% {
-        opacity: 0.5;
+    100% {
+        text-shadow: 
+            0 0 15px rgba(255, 69, 0, 0.8),
+            0 0 25px rgba(255, 136, 0, 0.8),
+            0 0 35px rgba(0, 200, 255, 0.8),
+            0 0 45px rgba(0, 51, 170, 0.9);
     }
 }
 
-/* Subtitle */
+.adult-swim-logo {
+    font-size: 6rem;
+    margin: 0;
+}
+
 .subtitle {
-    font-size: 1.2rem;
-    color: #ffdd44;
-    text-shadow: 0 0 5px #ffdd44, 0 0 15px #ffdd44;
+    font-size: 2rem;
+    margin: 20px 0;
 }
 
-/* Emoji */
-.emoji {
-    font-size: 2.5rem;
-    margin: 10px 0;
-}
-
-/* Styled Button */
+/* Enhanced Button Styling */
 .button {
     padding: 15px 30px;
     font-size: 1.5rem;
-    background: linear-gradient(45deg, #ff0044, #ffdd44);
-    color: black;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
+    color: #ffffff;
+    background: linear-gradient(45deg, #FF4500, #00C8FF);
+    border: 3px solid #FF8800;
+    border-radius: 10px;
     cursor: pointer;
+    box-shadow: 0 0 10px #FF8800, 0 0 20px #FF4500;
     text-transform: uppercase;
-    box-shadow: 0 0 5px #ff0044, 0 0 20px #ffdd44;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    display: inline-block;
+    z-index: 3;
 }
 
 .button:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 10px #ff0044, 0 0 30px #ffdd44;
+    box-shadow: 0 0 20px #FF8800, 0 0 40px #FF4500;
+    color: #000;
+    background: linear-gradient(45deg, #FF8800, #0033AA);
 }
 
-/* Footer Styling */
 .footer {
-    position: absolute;
-    bottom: 10px;
-    font-size: 0.9rem;
-    color: #aaa;
-    width: 100%;
-    text-align: center;
+    font-size: 1rem;
+    margin-top: 20px;
+    color: #FF8800;
+    z-index: 3;
 }
 
-.footer a {
-    color: #ff0044;
-    text-decoration: none;
-    font-weight: bold;
-}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .adult-swim-logo {
+        font-size: 4rem;
+    }
 
-.footer a:hover {
-    text-decoration: underline;
-}
+    .subtitle {
+        font-size: 1.5rem;
+    }
 
-/* Retro Scanlines Effect */
-.scanlines {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 5;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-        transparent 0px,
-        transparent 2px,
-        rgba(0, 0, 0, 0.4) 2px,
-        rgba(0, 0, 0, 0.4) 4px
-    );
-    mix-blend-mode: multiply;
-    opacity: 1;
+    .button {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
 }
-
-/* Noise Effect */
-.noise {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 4;
-    pointer-events: none;
-    background: url('https://upload.wikimedia.org/wikipedia/commons/d/d3/Static.gif');
-    background-size: cover;
-    opacity: 0.15;
-    mix-blend-mode: overlay;
-    animation: noise-animation 0.2s infinite;
-}
-
-@keyframes noise-animation {
-    0% { opacity: 0.1; }
-    50% { opacity: 0.2; }
-    100% { opacity: 0.1; }
-}
-
-/* VHS Effect */
-.vhs-effect {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 6;
-    pointer-events: none;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.1),
-        rgba(0, 0, 0, 0.1),
-        rgba(255, 255, 255, 0.05)
-    );
-    opacity: 0.3;
-    mix-blend-mode: screen;
-}
-
-/* VHS Top and Bottom Overlay */
-.vhs-top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    z-index: 7;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.8),
-        transparent
-    );
-}
-
-.vhs-bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    z-index: 7;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.8),
-        transparent
-    );
-}
-
