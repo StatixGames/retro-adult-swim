@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adult Swim Retro</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background: black;
+            color: white;
+            overflow: hidden;
+        }
+
+        .retro-grid {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50%;
+            background: repeating-linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0.1) 0px,
+                rgba(255, 255, 255, 0.1) 10px,
+                transparent 10px,
+                transparent 20px
+            ),
+            repeating-linear-gradient(
+                to top,
+                rgba(255, 255, 255, 0.1) 0px,
+                rgba(255, 255, 255, 0.1) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            border: none;
+            z-index: 1;
+            filter: contrast(0.7) brightness(0.8) saturate(1.5);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 2;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0.03) 0px,
+                rgba(255, 255, 255, 0.03) 5px,
+                transparent 5px,
+                transparent 10px
+            ),
+            repeating-linear-gradient(
+                to top,
+                rgba(255, 255, 255, 0.03) 0px,
+                rgba(255, 255, 255, 0.03) 5px,
+                transparent 5px,
+                transparent 10px
+            );
+        }
+
+        .glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 3;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(255, 0, 68, 0.3), transparent);
+            mix-blend-mode: lighten;
+        }
+
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 4;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                transparent 0px,
+                transparent 2px,
+                rgba(0, 0, 0, 0.1) 2px,
+                rgba(0, 0, 0, 0.1) 4px
+            );
+            mix-blend-mode: multiply;
+            opacity: 0.5;
+        }
+
+        .noise {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 5;
+            pointer-events: none;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/d/d3/Static.gif');
+            background-size: cover;
+            opacity: 0.1;
+            mix-blend-mode: overlay;
+            animation: noise-animation 0.2s infinite;
+        }
+
+        @keyframes noise-animation {
+            0% { opacity: 0.05; }
+            50% { opacity: 0.1; }
+            100% { opacity: 0.05; }
+        }
+
+        .vhs-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 6;
+            pointer-events: none;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.1),
+                rgba(0, 0, 0, 0.1),
+                rgba(255, 255, 255, 0.05)
+            );
+            opacity: 0.2;
+            mix-blend-mode: screen;
+        }
+
+        .vhs-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            z-index: 7;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.8),
+                transparent
+            );
+        }
+
+        .vhs-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            z-index: 7;
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.8),
+                transparent
+            );
+        }
+    </style>
+</head>
+<body>
+    <div class="retro-grid"></div>
+
+    <div class="adult-swim">
+        <div class="adult-swim-logo">[ adult swim ]</div>
+        <div class="subtitle">All of your favorite late-night retro vibes</div>
+        <div class="emoji">💩</div>
+        <button class="button" id="enterButton">Enter</button>
+    </div>
+
+    <iframe id="adultSwimFrame" src="https://www.adultswim.com"></iframe>
+
+    <div class="footer">
+        Made with 💩 by <a href="#">Your Name</a>
+    </div>
+
+    <script>
+        document.getElementById("enterButton").addEventListener("click", function () {
+            const frame = document.getElementById("adultSwimFrame");
+            const mainContent = document.querySelector(".adult-swim");
+            frame.style.display = "block";
+            mainContent.style.display = "none";
+        });
+    </script>
+
+    <div class="overlay"></div>
+    <div class="glow"></div>
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+    <div class="vhs-effect"></div>
+    <div class="vhs-top"></div>
+    <div class="vhs-bottom"></div>
+</body>
+</html>
